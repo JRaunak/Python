@@ -1,7 +1,8 @@
 # Additional Modules
 - ***pygame***
   - A graphics module for python
-  - To download using command line, type "pip install pygame" in cmd without braces
+  - To download it using command line, type "pip install pygame" in cmd without the braces
+  - The PyPI page for the module is [PyPI/pygame](https://pypi.org/project/pygame/)
 
 # Structure of Code
 - The code has 1 python script containing the entire code.
