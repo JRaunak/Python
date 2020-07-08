@@ -1,3 +1,2 @@
-i am fine how are you?
-my name is Raunak Jain
-I am 20 y/o
+This is my encrytion/decryption program
+It uses RSA encrytion
