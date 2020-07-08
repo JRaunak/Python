@@ -2,13 +2,11 @@
 None
 
 # Structure of Code
-1.The file rsa_keys.txt just contains the info of the public and private keys for the user. The program is not connected to the file
+1. The file rsa_keys.txt just contains the info of the public and private keys for the user. The program is not connected to the file
+2. Two scripts contain the decryption and Encryption code, and a third script combines the two.
+3. The name of the scripts are self-explanatory
 
-2.Two scripts contain the decryption and Encryption code, and a third script combines the two.
-
-3.The name of the scripts are self-explanatory
-
-4.The Message to be Encrypted must be written in Message.txt
+4. The Message to be Encrypted must be written in Message.txt
 
 5.The Encryption program creates a file CipherText.txt containing the encrypted message
 
