@@ -40,15 +40,15 @@ def GameOver():
 
 
 class Object:
-    def __init__(self,image,x,y,dx,dy):
+    def __init__(self,image,X,Y,dX,dY):
         self.Image=pygame.image.load(image)
-        self.X=x
-        self.Y=y
-        self.dX=dx
-        self.dY=dy
+        self.X=X
+        self.Y=Y
+        self.dX=dX
+        self.dY=dY
 
     def Draw(self):
-        screen.blit(self.Image,(self.X,self.Y))
+        screen.blit(self.Image,(int(self.X),int(self.Y)))
 
 class Bullets(Object):
     def __init__(self,Image,X,Y,dX,dY):
@@ -68,7 +68,7 @@ class Bullets(Object):
 
 Player = Object('Dependencies/Ship.png',368.0,500.0,0,0)     #Object Instance as SpaceShip
 
-Bullet = Bullets('Dependencies/bullet.png',0,500,0,3.5)      #Bullets Instance as a Bullet
+Bullet = Bullets('Dependencies/bullet.png',0,500,0,4.0)      #Bullets Instance as a Bullet
 
 #Data of AlienShip==========================================================================================================#    
 AlienImgs=['Dependencies/Alien1.png','Dependencies/Alien2.png','Dependencies/Alien3.png']                                   #
@@ -89,13 +89,15 @@ while running:                                                  #
     SafeZone()                                                  #
     #                                                           #
     for event in pygame.event.get():                            #
-        #To close the Screen========================#           #
-        if event.type==pygame.QUIT: running=False#==#           #
+        #To close the Screen============#                       #
+        if event.type==pygame.QUIT:     #                       #
+            running=False               #                       #
+            pygame.quit()#==============#                       #
         #                                                       #
         #Ship Movement======================================#   #
         if event.type==pygame.KEYDOWN:                      #   #
-            if event.key==pygame.K_LEFT: Player.dX=-0.7     #   #
-            elif event.key==pygame.K_RIGHT: Player.dX=0.7   #   #    
+            if event.key==pygame.K_LEFT: Player.dX=-1.2     #   #
+            elif event.key==pygame.K_RIGHT: Player.dX=1.2   #   #    
             #                                               #   #    
             #Fire a Bullet==========================#       #   #
             if event.key==pygame.K_SPACE:           #       #   #
