@@ -82,76 +82,74 @@ for i in range(No_of_Aliens):                                                   
 music.load('Dependencies/background.wav')   #
 music.play(-1)#=============================#
 
-#Game Loop======================================================#
-running=True                                                    #
-while running:                                                  #
-    screen.blit(background,(0,0))                               #
-    SafeZone()                                                  #
-    #                                                           #
-    for event in pygame.event.get():                            #
-        #To close the Screen============#                       #
-        if event.type==pygame.QUIT:     #                       #
-            running=False               #                       #
-            pygame.quit()#==============#                       #
-        #                                                       #
-        #Ship Movement======================================#   #
-        if event.type==pygame.KEYDOWN:                      #   #
-            if event.key==pygame.K_LEFT: Player.dX=-1.2     #   #
-            elif event.key==pygame.K_RIGHT: Player.dX=1.2   #   #    
-            #                                               #   #    
-            #Fire a Bullet==========================#       #   #
-            if event.key==pygame.K_SPACE:           #       #   #
-                if Bullet.state=='ready':           #       #   #
-                    Bullet_sound=Sound('Dependencies/laser.wav')#
-                    Bullet_sound.play()             #       #   #
-                Bullet.X=Player.X+20                #       #   #
-                Bullet.Fire()#======================#       #   #
-        #                                                   #   #
-        if event.type==pygame.KEYUP:                        #   #
-            Player.dX=0                                     #   #
-    Player.X+=Player.dX                                     #   #
-    if Player.X<0: Player.X=0                               #   #
-    elif Player.X>736: Player.X=736#========================#   #
-    #                                                           #
-    if Bullet.Y<10:                                             #
-        Bullet.Y=500                                            #
-        Bullet.state='ready'                                    #
-    #                                                           #
-    if Bullet.state=='fire':                                    #
-        Bullet.Fire()                                           #
-        Bullet.Y-=Bullet.dY                                     #
-    #                                                           #            
-    #Alien Movement=====================================#       #
-    for i in range(No_of_Aliens):                       #       #
-        #                                               #       #
-        Aliens[i].X+=Aliens[i].dX                       #       #
-        if Aliens[i].X<0:                               #       #
-            Aliens[i].dX=1.5                            #       #
-            Aliens[i].Y+=Aliens[i].dY                   #       #
-        elif Aliens[i].X>736:                           #       #
-            Aliens[i].dX=-1.5                           #       #
-            Aliens[i].Y+=Aliens[i].dY                   #       #
-        #                                               #       #
-        #When an Alien is hit by a Bullet===========#   #       #
-        if Bullet.Hit(Aliens[i].X,Aliens[i].Y):     #   #       #
-            Explode_sound=Sound('Dependencies/explosion.wav')   #
-            Explode_sound.play()                    #   #       #
-            Bullet.Y=500                            #   #       #
-            Bullet.state='ready'                    #   #       #
-            score_value+=1                          #   #       #
-            Aliens[i].X=randint(0,61)*12            #   #       #
-            Aliens[i].Y=randint(3,12)*8#============#   #       #
-        #                                               #       #
-        #Game Over==========================#           #       #
-        if Aliens[i].Y>400:                 #           #       #
-            for j in range(No_of_Aliens):   #           #       #
-                Aliens[j].Y=750             #           #       #
-            GameOver()#=====================#           #       #
-        #                                               #       #
-        Aliens[i].Draw()#===============================#       #
-    #                                                           #
-    Player.Draw()                                               #
-    #                                                           #
-    #Printing the score=#                                       #
-    ShowScore()#========#                                       #
-    pygame.display.update()#====================================#
+running=True                                                    
+while running:                                                  
+    screen.blit(background,(0,0))                               
+    SafeZone()                                                  
+                                                      
+    for event in pygame.event.get():                            
+        #To close the Screen============#                       
+        if event.type==pygame.QUIT:     #                       
+            running=False               #                       
+            pygame.quit()#==============#                       
+                             
+        #Ship Movement======================================#   
+        if event.type==pygame.KEYDOWN:                         
+            if event.key==pygame.K_LEFT: Player.dX=-1.2        
+            elif event.key==pygame.K_RIGHT: Player.dX=1.2                                                       
+            #Fire a Bullet==========================#         
+            if event.key==pygame.K_SPACE:                     
+                if Bullet.state=='ready':                     
+                    Bullet_sound=Sound('Dependencies/laser.wav')
+                    Bullet_sound.play()                       
+                Bullet.X=Player.X+20                   
+                Bullet.Fire()     
+
+        if event.type==pygame.KEYUP:                           
+            Player.dX=0                                        
+    Player.X+=Player.dX                                        
+    if Player.X<0: Player.X=0                               
+    elif Player.X>736: Player.X=736
+                                 
+    if Bullet.Y<10:                                             
+        Bullet.Y=500                                            
+        Bullet.state='ready'                                    
+
+    if Bullet.state=='fire':                                    
+        Bullet.Fire()                                           
+        Bullet.Y-=Bullet.dY                                     
+                   
+    #Alien Movement=====================================#       
+    for i in range(No_of_Aliens):                       
+        #                                                      
+        Aliens[i].X+=Aliens[i].dX                              
+        if Aliens[i].X<0:                                      
+            Aliens[i].dX=1.5                                  
+            Aliens[i].Y+=Aliens[i].dY                         
+        elif Aliens[i].X>736:                                  
+            Aliens[i].dX=-1.5                                  
+            Aliens[i].Y+=Aliens[i].dY                          
+
+        #When an Alien is hit by a Bullet===========#   
+        if Bullet.Hit(Aliens[i].X,Aliens[i].Y):     #          
+            Explode_sound=Sound('Dependencies/explosion.wav')   
+            Explode_sound.play()                    #          
+            Bullet.Y=500                            #          
+            Bullet.state='ready'                    #         
+            score_value+=1                          #          
+            Aliens[i].X=randint(0,61)*12            #          
+            Aliens[i].Y=randint(3,12)*8#============#          
+  
+        #Game Over==========================#            
+        if Aliens[i].Y>400:                                   
+            for j in range(No_of_Aliens):                     
+                Aliens[j].Y=750                        
+            GameOver()              
+   
+        Aliens[i].Draw() 
+        
+    Player.Draw()                                               
+    
+    #Printing the score=#                                       
+    ShowScore()                                   
+    pygame.display.update()
