@@ -14,6 +14,7 @@
         - --icon <icon.ico> : To add an icon to the compiled binary
     - To download it using command line, type "pip install PyInstaller"
     - The PyPI page for the module is [pyinstaller.PyPI](https://pypi.org/project/PyInstaller/)
+    - More Documentation can be found on [pyinstaller.docs](https://pyinstaller.readthedocs.io/en/stable/index.html)
 
 # Structure of Code
 - The directory has 1 python script containing the entire code.
@@ -21,7 +22,7 @@
 - A Dependency named 'Winnings.dat' consists of some serialized data for the script
 
 # About
-- Running the .exe file doesn't require any download or even python installed<br>It is a standalone program.
+- Running the .exe file doesn't require any download or even python installed.<br>It is a standalone program. The Winnings.dat file is essential
 - The .exe file is for those who just want to play the game.
 - Those who want to check the source code, or make changes in it shall use the python script.
 - To run the python script, all the non-optional modules/libraries are required.
