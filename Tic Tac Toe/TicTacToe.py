@@ -1,4 +1,3 @@
-from pickle import load
 import numpy as np
 import pygame
 from pygame import mouse
@@ -6,10 +5,41 @@ from pygame import mouse
 pygame.init()
 screen = pygame.display.set_mode((606, 606))
 pygame.display.set_caption('Tic Tac Toe')
-input()
-Winning = load(open('Winnings.dat', 'rb'))
-AllZero = np.zeros([3, 3])
+Winning = [
+            np.array([[1, 0, 0],
+                      [0, 1, 0],
+                      [0, 0, 1]]),
 
+            np.array([[0, 0, 1],
+                      [0, 1, 0],
+                      [1, 0, 0]]),
+
+            np.array([[1, 0, 0],
+                      [1, 0, 0],
+                      [1, 0, 0]]),
+
+            np.array([[0, 1, 0],
+                      [0, 1, 0],
+                      [0, 1, 0]]),
+
+            np.array([[0, 0, 1],
+                      [0, 0, 1],
+                      [0, 0, 1]]),
+
+            np.array([[1, 1, 1],
+                      [0, 0, 0],
+                      [0, 0, 0]]),
+
+            np.array([[0, 0, 0],
+                      [1, 1, 1],
+                      [0, 0, 0]]),
+
+            np.array([[0, 0, 0],
+                      [0, 0, 0],
+                      [1, 1, 1]])
+]
+#Winning = load(open('Winnings.dat', 'rb'))
+AllZero = np.zeros([3, 3])
 def Grid():
     pygame.draw.line(screen, (70, 70, 210), (200, 0), (200, 606), 3)
     pygame.draw.line(screen, (70, 70, 210), (403, 0), (403, 606), 3)
